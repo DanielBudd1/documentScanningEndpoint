@@ -21,7 +21,7 @@ async def root():
 
 @app.get("/api/test/")
 async def test():
- return "Hello World!"
+ return {"Message":"Hello World!"}
 
 # @app.post("/upload")
 # def upload(files: List[UploadFile] = File(...)):
