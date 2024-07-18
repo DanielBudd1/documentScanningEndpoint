@@ -15,30 +15,29 @@ app.add_middleware(
  allow_headers=["*"],
 )
 
+@app.get("/api/test")
+async def test():
+ return "Hello World!"
 
-app.get("/home")
-async def helloWorld():
-    return "HelloWorld"
+# @app.post("/upload")
+# def upload(files: List[UploadFile] = File(...)):
+#     keyWords = ['amex','american','express','capital','tap','hsbc']
+#     flaggedFiles = []
+#     for file in files:
+#         if file.content_type != "application/pdf":
+#             return {"error": f"File {file.filename} is not a PDF"}
 
-@app.post("/upload")
-def upload(files: List[UploadFile] = File(...)):
-    keyWords = ['amex','american','express','capital','tap','hsbc']
-    flaggedFiles = []
-    for file in files:
-        if file.content_type != "application/pdf":
-            return {"error": f"File {file.filename} is not a PDF"}
-
-        images = convertPdfToImages(file)
-        images = convertImagesToCv2Array(images)
+#         images = convertPdfToImages(file)
+#         images = convertImagesToCv2Array(images)
         
-        for i in images:
-            preprocessImage = preprocessImage(i)
-            containsKeyWords = flagKeyWords(i)
-            if containsKeyWords:
-                flaggedFiles.append(file) 
-                break
+#         for i in images:
+#             preprocessImage = preprocessImage(i)
+#             containsKeyWords = flagKeyWords(i)
+#             if containsKeyWords:
+#                 flaggedFiles.append(file) 
+#                 break
 
-    if flaggedFiles:
-        return {"filenames": [file.filename for file in flaggedFiles]}
-    else:
-        return {"No files of relevance"}
+#     if flaggedFiles:
+#         return {"filenames": [file.filename for file in flaggedFiles]}
+#     else:
+#         return {"No files of relevance"}
