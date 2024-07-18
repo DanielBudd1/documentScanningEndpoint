@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List
 import shutil
@@ -15,7 +15,7 @@ app.add_middleware(
  allow_headers=["*"],
 )
 
-async def upload_pdfs(files: List[FastAPI.UploadFile] = FastAPI.File(...)):
+def upload(files: List[UploadFile] = File(...)):
     keyWords = ['amex','american','express','capital','tap','hsbc']
     flaggedFiles = []
     for file in files:
