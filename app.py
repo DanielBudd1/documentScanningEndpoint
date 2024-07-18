@@ -19,7 +19,7 @@ app.add_middleware(
 async def root():
     return {"message": "Hello World"}
 
-@app.get("/api/test/")
+@app.get("/api/")
 async def test():
  return {"Message":"Hello World!"}
 
