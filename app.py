@@ -15,6 +15,12 @@ app.add_middleware(
  allow_headers=["*"],
 )
 
+
+app.get("/")
+def helloWorld():
+    return "HelloWorld"
+
+@app.post("/upload")
 def upload(files: List[UploadFile] = File(...)):
     keyWords = ['amex','american','express','capital','tap','hsbc']
     flaggedFiles = []
