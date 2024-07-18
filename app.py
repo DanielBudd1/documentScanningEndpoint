@@ -17,7 +17,7 @@ app.add_middleware(
 
 
 app.get("/home")
-def helloWorld():
+async def helloWorld():
     return "HelloWorld"
 
 @app.post("/upload")
