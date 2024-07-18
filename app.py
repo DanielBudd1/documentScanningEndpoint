@@ -16,7 +16,7 @@ app.add_middleware(
 )
 
 
-app.get("/")
+app.get("/home")
 def helloWorld():
     return "HelloWorld"
 
